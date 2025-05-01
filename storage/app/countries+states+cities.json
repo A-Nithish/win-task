@@ -1,0 +1,41 @@
+[
+    {
+      "country_name": "India",
+      "states": [
+        {
+          "state_name": "Tamil Nadu",
+          "cities": [
+            { "city_name": "Chennai" },
+            { "city_name": "Coimbatore" }
+          ]
+        },
+        {
+          "state_name": "Karnataka",
+          "cities": [
+            { "city_name": "Bengaluru" },
+            { "city_name": "Mysuru" }
+          ]
+        }
+      ]
+    },
+    {
+      "country_name": "USA",
+      "states": [
+        {
+          "state_name": "California",
+          "cities": [
+            { "city_name": "Los Angeles" },
+            { "city_name": "San Francisco" }
+          ]
+        },
+        {
+          "state_name": "Texas",
+          "cities": [
+            { "city_name": "Houston" },
+            { "city_name": "Dallas" }
+          ]
+        }
+      ]
+    }
+  ]
+  
