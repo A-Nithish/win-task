@@ -4,39 +4,33 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use App\Models\State;
-use App\Models\Country; // Add this line to import Country model
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
     public function index(Request $request)
     {
-        // Start query to fetch cities
-        $query = City::with('state.country'); // Make sure to load country with the state
+        $query = City::with('state.country'); 
     
-        // Search by city name
         if ($request->filled('city_name')) {
             $query->where('city_name', 'like', '%' . $request->city_name . '%');
         }
     
-        // Filter by state
         if ($request->filled('state_id')) {
             $query->where('state_id', $request->state_id);
         }
     
-        // Filter by country
         if ($request->filled('country_id')) {
             $query->whereHas('state', function ($q) use ($request) {
                 $q->where('country_id', $request->country_id);
             });
         }
     
-        // Fetch filtered cities
         $cities = $query->latest()->paginate(10);
         
-        // Fetch states and countries for filters
         $states = State::all();
-        $countries = Country::all(); // Ensure the Country model is available
+        $countries = Country::all(); 
 
         return view('cities.index', compact('cities', 'states', 'countries'));
     }
